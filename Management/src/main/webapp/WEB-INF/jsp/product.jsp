@@ -1,6 +1,5 @@
 <%@include file="commons/header.jspf"%>
 <%@include file="commons/navigation.jspf"%>
-<div class="container">
 	<form:form method="post" commandName="product">
 		<fieldset class="form-group">
 			<form:label path="name">Name:</form:label>
@@ -17,5 +16,4 @@
 		<button class="btn btn-success" type="submit">Add</button>
 
 	</form:form>
-</div>
 <%@include file="commons/footer.jspf"%>

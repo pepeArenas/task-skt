@@ -1,6 +1,5 @@
 <%@include file="commons/header.jspf"%>
 <%@include file="commons/navigation.jspf"%>
-<div class="container">
 	<table class="table table-striped">
 		<caption>Products</caption>
 		<thead>
@@ -21,5 +20,4 @@
 
 		</tbody>
 	</table>
-</div>
 <%@include file="commons/footer.jspf"%>

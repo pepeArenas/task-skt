@@ -22,8 +22,9 @@ public class Product {
 	@Id
 	@GeneratedValue
 	private Integer id;
-	@Size(min = 3, max = 45, message = "Name should be at leats 3 characters")
+	@Size(min = 3, max = 45, message = "Name should be between 3 and 45 characters")
 	private String name;
+	@Size(min = 3, max = 45, message = "Model should be between 3 and 45 characters")
 	private String model;
 	private String price;
 
@@ -32,7 +33,6 @@ public class Product {
 	}
 
 	public Product(Integer id, String name, String model, String price) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.model = model;
@@ -75,50 +75,7 @@ public class Product {
 	public void setPrice(String price) {
 		this.price = price;
 	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((model == null) ? 0 : model.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((price == null) ? 0 : price.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Product other = (Product) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (model == null) {
-			if (other.model != null)
-				return false;
-		} else if (!model.equals(other.model))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (price == null) {
-			if (other.price != null)
-				return false;
-		} else if (!price.equals(other.price))
-			return false;
-		return true;
-	}
-
+	
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", name=" + name + ", model=" + model + ", price=" + price + "]";

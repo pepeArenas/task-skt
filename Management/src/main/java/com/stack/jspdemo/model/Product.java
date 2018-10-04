@@ -4,18 +4,21 @@ import javax.validation.constraints.Size;
 
 import org.springframework.stereotype.Component;
 
-@Component
 public class Product {
 	private Integer id;
-	@Size(min = 10, message = "Enter at least 10 characters")
+	@Size(min = 3, max = 45, message = "Name should be between 3 and 45 characters")
 	private String name;
+	@Size(min = 3, max = 45, message = "Model should be between 3 and 45 characters")
 	private String model;
 	private String price;
 
 	public Product() {
-
 	}
-	
+
+	public Product(String name) {
+		this.name = name;
+	}
+
 	public Product(Integer id, String name, String model, String price) {
 		this.id = id;
 		this.name = name;
@@ -29,11 +32,6 @@ public class Product {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Product(String name) {
-		super();
-		this.name = name;
 	}
 
 	public String getName() {

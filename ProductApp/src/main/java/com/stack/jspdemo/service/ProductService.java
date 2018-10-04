@@ -13,8 +13,6 @@ import com.stack.jspdemo.repository.ProductRepository;
 public class ProductService {
 	public static List<Product> products = new ArrayList<>();
 
-	private static int userCount = 3;
-
 	@Autowired
 	private ProductRepository repo;
 

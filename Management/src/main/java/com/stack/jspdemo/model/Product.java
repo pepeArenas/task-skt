@@ -15,9 +15,8 @@ public class Product {
 	public Product() {
 
 	}
-
+	
 	public Product(Integer id, String name, String model, String price) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.model = model;

@@ -3,15 +3,20 @@ package com.stack.jspdemo.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.stack.jspdemo.model.Product;
 
 @Service
 public class ProductService {
+	
+	@Autowired
+	public ProductService() {
+	}
+	
 	public static List<Product> products = new ArrayList<>();
 
-	private static int userCount = 3;
 
 	static {
 		products.add(new Product(1, "tuerca", "modelo1", "20.30"));
@@ -20,10 +25,7 @@ public class ProductService {
 	}
 
 	public Product addProduct(Product product) {
-		if (product.getId() == null) {
-
-			product.setId(++userCount);
-		}
+	
 		products.add(product);
 		return product;
 	}

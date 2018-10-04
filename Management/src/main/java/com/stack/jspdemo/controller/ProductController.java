@@ -1,7 +1,5 @@
 package com.stack.jspdemo.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +17,6 @@ public class ProductController {
 
 	@Autowired
 	ProductService productService;
-	@Autowired
 	Product product;
 
 	@RequestMapping(value = "/product", method = RequestMethod.GET)
@@ -36,10 +33,6 @@ public class ProductController {
 
 	@RequestMapping(value = "/product", method = RequestMethod.POST)
 	public String showAddedProductPage(ModelMap model, @Valid Product product, BindingResult result) {
-		if (product.getName().equals("jesus")) {
-			throw new RuntimeException("Ocurrio un error");
-		}
-
 		if (result.hasErrors()) {
 			return "product";
 		}

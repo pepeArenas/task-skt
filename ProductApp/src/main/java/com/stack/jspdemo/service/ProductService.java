@@ -22,7 +22,6 @@ public class ProductService {
 	}
 
 	public Product save(Product product) {
-		// products.add(product);
 		repo.insertProduct(product);
 
 		return product;

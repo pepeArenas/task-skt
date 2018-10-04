@@ -20,7 +20,6 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 
 	@Override
 	public void insertProduct(Product product) {
-		System.out.println(product.getName());
 		StoredProcedureQuery insert = em.createNamedStoredProcedureQuery("insertProduct");
 		insert.setParameter("productName", product.getName());
 		insert.setParameter("model", product.getModel());

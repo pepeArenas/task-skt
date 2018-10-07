@@ -2,7 +2,11 @@ package com.stack.jspdemo.controller;
 
 import javax.validation.Valid;
 
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
+import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -27,7 +31,7 @@ public class ProductController {
 
 	@RequestMapping(value = "/products", method = RequestMethod.GET)
 	public String showProductsPage(ModelMap model) {
-		model.put("products", productService.findAll());
+		model.put("products", productService.printAllProducts());
 		return "products";
 	}
 
@@ -36,10 +40,8 @@ public class ProductController {
 		if (result.hasErrors()) {
 			return "product";
 		}
-
 		productService.addProduct(product);
 
 		return "redirect:/products";
 	}
-
 }

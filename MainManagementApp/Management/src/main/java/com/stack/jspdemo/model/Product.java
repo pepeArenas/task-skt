@@ -1,10 +1,10 @@
 package com.stack.jspdemo.model;
 
+import java.io.Serializable;
+
 import javax.validation.constraints.Size;
 
-import org.springframework.stereotype.Component;
-
-public class Product {
+public class Product implements Serializable {
 	private Integer id;
 	@Size(min = 3, max = 45, message = "Name should be between 3 and 45 characters")
 	private String name;
@@ -56,6 +56,11 @@ public class Product {
 
 	public void setPrice(String price) {
 		this.price = price;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("Product [id=%s, name=%s, model=%s, price=%s]", id, name, model, price);
 	}
 
 }

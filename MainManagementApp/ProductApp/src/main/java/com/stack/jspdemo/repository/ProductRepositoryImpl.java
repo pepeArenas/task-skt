@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.StoredProcedureQuery;
 
-import com.stack.jspdemo.model.Product;
+import com.stack.jspdemo.entity.Product;
 
 public class ProductRepositoryImpl implements ProductRepositoryCustom {
 	@PersistenceContext

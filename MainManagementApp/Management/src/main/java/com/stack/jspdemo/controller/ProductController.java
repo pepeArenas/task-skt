@@ -2,18 +2,14 @@ package com.stack.jspdemo.controller;
 
 import javax.validation.Valid;
 
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
-import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.stack.jspdemo.model.Product;
+import com.stack.jspdemo.model.ProductDTO;
 import com.stack.jspdemo.service.ProductService;
 
 @Controller
@@ -21,11 +17,11 @@ public class ProductController {
 
 	@Autowired
 	ProductService productService;
-	Product product;
+	ProductDTO product;
 
 	@RequestMapping(value = "/product", method = RequestMethod.GET)
 	public String showProductPage(ModelMap model) {
-		model.put("product", new Product());
+		model.put("product", new ProductDTO());
 		return "product";
 	}
 
@@ -36,7 +32,7 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/product", method = RequestMethod.POST)
-	public String showAddedProductPage(ModelMap model, @Valid Product product, BindingResult result) {
+	public String showAddedProductPage(ModelMap model, @Valid ProductDTO product, BindingResult result) {
 		if (result.hasErrors()) {
 			return "product";
 		}

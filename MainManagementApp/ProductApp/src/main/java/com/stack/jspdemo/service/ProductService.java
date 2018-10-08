@@ -3,12 +3,12 @@ package com.stack.jspdemo.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.stack.jspdemo.model.Product;
-import com.stack.jspdemo.rabbit.consumer.Consumer;
+import com.stack.jspdemo.entity.Product;
 import com.stack.jspdemo.rabbit.producer.Producer;
 import com.stack.jspdemo.repository.ProductRepository;
 
@@ -16,8 +16,8 @@ import com.stack.jspdemo.repository.ProductRepository;
 public class ProductService {
 	public static List<Product> products = new ArrayList<>();
 
-	@Autowired
-	Consumer consumer;
+	// @Autowired
+	// Consumer consumer;
 	@Autowired
 	Producer producer;
 	@Autowired
@@ -34,6 +34,9 @@ public class ProductService {
 
 	@RabbitListener(queues = "${jsa.rabbitmq.queue}", containerFactory = "jsaFactory")
 	public void save(Product product) {
+		// public void save(ProductDTO product) {
+		// ModelMapper convertDTOEntity = new ModelMapper();
+		// Product productEntity = convertDTOEntity.map(product, Product.class);
 		repo.insertProduct(product);
 		findAll();
 	}

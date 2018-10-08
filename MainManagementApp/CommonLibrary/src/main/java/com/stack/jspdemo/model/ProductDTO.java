@@ -1,6 +1,7 @@
 package com.stack.jspdemo.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javax.validation.constraints.Size;
 
@@ -10,7 +11,7 @@ public class ProductDTO implements Serializable {
 	private String name;
 	@Size(min = 3, max = 45, message = "Model should be between 3 and 45 characters")
 	private String model;
-	private String price;
+	private BigDecimal price;
 
 	public ProductDTO() {
 	}
@@ -19,7 +20,7 @@ public class ProductDTO implements Serializable {
 		this.name = name;
 	}
 
-	public ProductDTO(Integer id, String name, String model, String price) {
+	public ProductDTO(Integer id, String name, String model, BigDecimal price) {
 		this.id = id;
 		this.name = name;
 		this.model = model;
@@ -50,11 +51,11 @@ public class ProductDTO implements Serializable {
 		this.model = model;
 	}
 
-	public String getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 

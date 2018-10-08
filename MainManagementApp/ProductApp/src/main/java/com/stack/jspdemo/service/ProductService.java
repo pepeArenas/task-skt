@@ -34,9 +34,6 @@ public class ProductService {
 
 	@RabbitListener(queues = "${jsa.rabbitmq.queue}", containerFactory = "jsaFactory")
 	public void save(Product product) {
-		// public void save(ProductDTO product) {
-		// ModelMapper convertDTOEntity = new ModelMapper();
-		// Product productEntity = convertDTOEntity.map(product, Product.class);
 		repo.insertProduct(product);
 		findAll();
 	}

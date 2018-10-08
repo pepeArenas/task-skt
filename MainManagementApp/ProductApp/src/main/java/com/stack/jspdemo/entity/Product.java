@@ -1,5 +1,7 @@
 package com.stack.jspdemo.entity;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -9,14 +11,14 @@ import javax.persistence.ParameterMode;
 import javax.persistence.StoredProcedureParameter;
 import javax.validation.constraints.Size;
 
-@Entity(name="PRODUCT")
+@Entity(name = "PRODUCT")
 @NamedStoredProcedureQueries({
 		@NamedStoredProcedureQuery(name = "findAllProducts", procedureName = "getAllProducts", resultClasses = {
 				Product.class }),
 		@NamedStoredProcedureQuery(name = "insertProduct", procedureName = "insertProd", parameters = {
 				@StoredProcedureParameter(name = "productName", type = String.class, mode = ParameterMode.IN),
 				@StoredProcedureParameter(name = "model", type = String.class, mode = ParameterMode.IN),
-				@StoredProcedureParameter(name = "price", type = String.class, mode = ParameterMode.IN), }) })
+				@StoredProcedureParameter(name = "price", type = BigDecimal.class, mode = ParameterMode.IN), }) })
 public class Product {
 
 	@Id
@@ -26,13 +28,13 @@ public class Product {
 	private String name;
 	@Size(min = 3, max = 45, message = "Model should be between 3 and 45 characters")
 	private String model;
-	private String price;
+	private BigDecimal price;
 
 	public Product() {
 
 	}
 
-	public Product(Integer id, String name, String model, String price) {
+	public Product(Integer id, String name, String model, BigDecimal price) {
 		this.id = id;
 		this.name = name;
 		this.model = model;
@@ -68,14 +70,14 @@ public class Product {
 		this.model = model;
 	}
 
-	public String getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", name=" + name + ", model=" + model + ", price=" + price + "]";

@@ -22,15 +22,17 @@ public class ProductService implements MessageListener {
 	private static final Logger LOGGER = Logger.getLogger(ProductService.class.getName());
 
 	public static Set<ProductDTO> products = new HashSet<>();
+	Producer producer;
+	RabbitTemplate rabbitTemplate;
 
 	public ProductService() {
 	}
 
 	@Autowired
-	Producer producer;
-
-	@Autowired
-	RabbitTemplate rabbitTemplate;
+	public ProductService(Producer producer, RabbitTemplate rabbitTemplate) {
+		this.producer = producer;
+		this.rabbitTemplate = rabbitTemplate;
+	}
 
 	public ProductDTO addProduct(ProductDTO product) {
 		producer.produce(product);

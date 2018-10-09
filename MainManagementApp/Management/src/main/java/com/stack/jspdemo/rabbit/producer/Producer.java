@@ -13,8 +13,12 @@ import com.stack.jspdemo.service.ProductService;
 @Component
 public class Producer {
 
-	@Autowired
 	private AmqpTemplate amqpTemplate;
+
+	@Autowired
+	public Producer(AmqpTemplate amqpTemplate) {
+		this.amqpTemplate = amqpTemplate;
+	}
 
 	@Value("${jsa.rabbitmq.exchange}")
 	private String exchange;

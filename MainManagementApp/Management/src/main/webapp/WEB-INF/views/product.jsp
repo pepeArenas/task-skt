@@ -13,7 +13,7 @@
         <form:errors path="model" cssClass="text-warning"></form:errors>
 
         <form:label path="price">Price:</form:label>
-        <form:input path="price" type="text" class="form-control"/>
+        <form:input path="price" type="number" min="0" value="0" step=".01" class="form-control"/>
 
     </fieldset>
     <button class="btn btn-success" type="submit">Add</button>

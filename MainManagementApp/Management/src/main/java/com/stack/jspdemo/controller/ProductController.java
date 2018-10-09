@@ -15,9 +15,13 @@ import com.stack.jspdemo.service.ProductService;
 @Controller
 public class ProductController {
 
-	@Autowired
 	ProductService productService;
 	ProductDTO product;
+
+	@Autowired
+	public ProductController(ProductService productService) {
+		this.productService = productService;
+	}
 
 	@RequestMapping(value = "/product", method = RequestMethod.GET)
 	public String showProductPage(ModelMap model) {
@@ -37,7 +41,6 @@ public class ProductController {
 			return "product";
 		}
 		productService.addProduct(product);
-
-		return "redirect:/products";
+		return "/menu";
 	}
 }

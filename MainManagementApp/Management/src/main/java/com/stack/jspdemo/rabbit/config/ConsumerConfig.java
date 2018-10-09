@@ -14,7 +14,7 @@ import com.stack.jspdemo.service.ProductService;
 
 @Configuration
 public class ConsumerConfig {
-	private final String My_QUEUE = "TestQueue";
+	private final String My_QUEUE = "MyQueue";
 
 	@Bean
 	Queue myQueue() {

@@ -1,4 +1,4 @@
-package org.CommonLibrary;
+package com.stack.jspdemo;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

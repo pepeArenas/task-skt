@@ -1,6 +1,6 @@
 use ManagementProduct;
 
-CREATE TABLE `PRODUCT` (
+CREATE TABLE `product` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   `model` varchar(45) DEFAULT NULL,
@@ -12,7 +12,7 @@ CREATE TABLE `PRODUCT` (
 DELIMITER $$
 CREATE DEFINER=`myuser`@`%` PROCEDURE `getAllProducts`()
 BEGIN
-  SELECT * FROM PRODUCT;
+  SELECT * FROM product;
 END$$
 DELIMITER ;
 
@@ -22,7 +22,7 @@ CREATE DEFINER=`myuser`@`%` PROCEDURE `insertProd`(IN productName varchar (30),
 													IN model varchar(30),
                                                     IN price DECIMAL)
 BEGIN
-INSERT INTO  PRODUCT (name,model,price) VALUES (productName, model, price);
+INSERT INTO  product (name,model,price) VALUES (productName, model, price);
 END$$
 DELIMITER ;
 

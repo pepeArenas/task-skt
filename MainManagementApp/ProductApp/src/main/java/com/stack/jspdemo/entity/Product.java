@@ -9,8 +9,13 @@ import javax.persistence.NamedStoredProcedureQueries;
 import javax.persistence.NamedStoredProcedureQuery;
 import javax.persistence.ParameterMode;
 import javax.persistence.StoredProcedureParameter;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
+import org.springframework.stereotype.Component;
+
+@Component
 @Entity(name = "PRODUCT")
 @NamedStoredProcedureQueries({
 		@NamedStoredProcedureQuery(name = "findAllProducts", procedureName = "getAllProducts", resultClasses = {
@@ -28,6 +33,8 @@ public class Product {
 	private String name;
 	@Size(min = 3, max = 45, message = "Model should be between 3 and 45 characters")
 	private String model;
+	@Min(value = 0L, message = "The value must be positive")
+	@Digits(integer = 5, fraction = 2, message = "Price shoud be 5 integer tops and 2 decimal")
 	private BigDecimal price;
 
 	public Product() {

@@ -1,17 +1,5 @@
 version: '2.3'
 services:
-  springappserver:
-    build:
-      context: .
-      dockerfile: springapp.dockerfile
-    ports:
-    - 8080:8080
-    networks:
-    - net-spring-db
-    volumes:
-    - .:/vol/development
-    depends_on:
-    - mysqldbserver
   mysqldbserver:
     build:
       context: .
@@ -29,7 +17,7 @@ services:
     volumes:
     - type: bind
       source: ./mysql
-      target: /docker-entrypoint-initdb.d
+      target: /docker-entrypoint-initdb.d 
 networks:
   net-spring-db:
     driver: bridge
